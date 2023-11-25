@@ -1,0 +1,26 @@
+{
+  "name": "basicapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "ts-node-dev src/index.ts",
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/index.js",
+    "rebuild": "docker rm ts_node -f && docker build -t ts_node .",
+    "restart": "docker rm ts_node -f && docker build -t ts_node . && docker run --env-file ./.env -p 3000:4000 -d --name ts_node ts_node"
+  },
+  "author": "LaPro",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.9.4",
+    "rimraf": "^5.0.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
+}

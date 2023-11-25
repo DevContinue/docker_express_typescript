@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  api:
+    container_name: api
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+      target: development
+    volumes:
+      - ../:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 4000:4000
+    command: npm run dev
